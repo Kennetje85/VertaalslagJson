@@ -42,8 +42,14 @@ def get_config_from_ini():
 
 def xml_to_json(xml_file):
     try:
-        tree = ET.parse(xml_file)
-        root = tree.getroot()
+        with open(xml_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Verwijder eventuele HTTP headers boven het XML-document
+        if '<' in content:
+            content = content[content.index('<'):]
+
+        root = ET.fromstring(content)
 
         def strip_ns(tag): 
             return tag.split('}', 1)[-1] if '}' in tag else tag
@@ -68,7 +74,7 @@ def xml_to_json(xml_file):
         return xml_to_dict(root)
 
     except Exception as e:
-        logging.error(f"XML conversiefout: {e}")
+        logging.error(f"XML conversiefout in '{xml_file}': {e}")
         return None
 
 def save_to_supabase(supabase_url, supabase_api_key, supabase_table, request_json=None, response_json=None):
