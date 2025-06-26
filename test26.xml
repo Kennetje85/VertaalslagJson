@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <product id="1">
+        <name>Smartphone</name>
+        <category>Electronics</category>
+        <price currency="USD">599.99</price>
+        <availability>
+            <status>In Stock</status>
+            <quantity>150</quantity>
+        </availability>
+    </product>
+    <product id="2">
+        <name>Laptop</name>
+        <category>Electronics</category>
+        <price currency="USD">1200.00</price>
+        <availability>
+            <status>Out of Stock</status>
+            <quantity>0</quantity>
+        </availability>
+    </product>
+    <product id="3">
+        <name>Blender</name>
+        <category>Home Appliances</category>
+        <price currency="EUR">89.99</price>
+        <availability>
+            <status>In Stock</status>
+            <quantity>80</quantity>
+        </availability>
+    </product>
+</catalog>
