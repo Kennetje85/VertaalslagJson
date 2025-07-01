@@ -23,12 +23,15 @@ def get_config_from_ini():
         default_supabase_api_key = "your-supabase-api-key-here"
         default_supabase_table = "public_logs"
 
+        
+        
         config['settings'] = {'directory': default_directory}
         config['supabase'] = {
             'SUPABASE_URL': default_supabase_url,
             'SUPABASE_API_KEY': default_supabase_api_key,
             'SUPABASE_TABLE': default_supabase_table
         }
+
         with open(ini_file, 'w') as configfile:
             config.write(configfile)
         print(f"config.ini aangemaakt met directory: {default_directory} en Supabase instellingen.")
@@ -50,6 +53,9 @@ def xml_to_json(xml_file):
             content = content[content.index('<'):]
 
         root = ET.fromstring(content)
+
+        
+
 
         def strip_ns(tag): 
             return tag.split('}', 1)[-1] if '}' in tag else tag
@@ -149,6 +155,8 @@ class XMLFileHandler(FileSystemEventHandler):
         self.supabase_url = supabase_url
         self.supabase_api_key = supabase_api_key
         self.supabase_table = supabase_table
+
+    
 
     def on_created(self, event):
         if event.is_directory:
